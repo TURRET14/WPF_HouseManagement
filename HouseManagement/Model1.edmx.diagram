@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d4b7c252915543d59ce52b5465e6ea45" Name="Diagram1">
+        <EntityTypeShape EntityType="Emelyanenko_HouseManagementModel.Должности" Width="1.5" PointX="1.5" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Emelyanenko_HouseManagementModel.Жильцы" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Emelyanenko_HouseManagementModel.Заявки" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Emelyanenko_HouseManagementModel.ОтчетПоОплате" Width="1.5" PointX="6" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Emelyanenko_HouseManagementModel.Сотрудники" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="Emelyanenko_HouseManagementModel.СписокЖилогоФонда" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Emelyanenko_HouseManagementModel.СписокЗадолженностей" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Emelyanenko_HouseManagementModel.СтатусыЗаявок" Width="1.5" PointX="0.75" PointY="14" IsExpanded="true" />
+        <AssociationConnector Association="Emelyanenko_HouseManagementModel.FK__Сотрудник__Должн__06CD04F7" ManuallyRouted="false" />
+        <AssociationConnector Association="Emelyanenko_HouseManagementModel.FK__Заявки__ID_Жильц__0B91BA14" ManuallyRouted="false" />
+        <AssociationConnector Association="Emelyanenko_HouseManagementModel.FK_ОтчетПоОплате_Жильцы" ManuallyRouted="false" />
+        <AssociationConnector Association="Emelyanenko_HouseManagementModel.FK_СписокЗадолженностей_Жильцы" ManuallyRouted="false" />
+        <AssociationConnector Association="Emelyanenko_HouseManagementModel.FK__Заявки__Ответств__0C85DE4D" ManuallyRouted="false" />
+        <AssociationConnector Association="Emelyanenko_HouseManagementModel.FK__Заявки__СтатусЗа__0D7A0286" ManuallyRouted="false" />
+        <AssociationConnector Association="Emelyanenko_HouseManagementModel.FK_ОтчетПоОплате_СписокЖилогоФонда" ManuallyRouted="false" />
+        <AssociationConnector Association="Emelyanenko_HouseManagementModel.FK_СписокЗадолженностей_СписокЖилогоФонда" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
