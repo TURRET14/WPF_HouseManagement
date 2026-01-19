@@ -6,6 +6,9 @@
         xmlns:local="clr-namespace:HouseManagement"
         mc:Ignorable="d"
         Title="Приложение управляющей компании" Height="450" Width="800" Icon="/icon.ico">
+    <Window.Resources>
+        <ResourceDictionary Source="/Dictionary1.xaml"></ResourceDictionary>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>

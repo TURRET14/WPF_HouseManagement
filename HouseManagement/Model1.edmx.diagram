@@ -21,6 +21,7 @@
         <AssociationConnector Association="Emelyanenko_HouseManagementModel.FK__Заявки__СтатусЗа__0D7A0286" ManuallyRouted="false" />
         <AssociationConnector Association="Emelyanenko_HouseManagementModel.FK_ОтчетПоОплате_СписокЖилогоФонда" ManuallyRouted="false" />
         <AssociationConnector Association="Emelyanenko_HouseManagementModel.FK_СписокЗадолженностей_СписокЖилогоФонда" ManuallyRouted="false" />
+        <AssociationConnector Association="Emelyanenko_HouseManagementModel.FK__Заявки__Адрес__0E6E26BF" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

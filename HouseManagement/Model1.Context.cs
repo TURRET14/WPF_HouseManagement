@@ -15,7 +15,7 @@ namespace HouseManagement
     
     public partial class Emelyanenko_HouseManagementEntities : DbContext
     {
-        private Emelyanenko_HouseManagementEntities()
+        public Emelyanenko_HouseManagementEntities()
             : base("name=Emelyanenko_HouseManagementEntities")
         {
         }

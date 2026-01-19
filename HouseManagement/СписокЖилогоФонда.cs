@@ -19,6 +19,7 @@ namespace HouseManagement
         {
             this.ОтчетПоОплате = new HashSet<ОтчетПоОплате>();
             this.СписокЗадолженностей = new HashSet<СписокЗадолженностей>();
+            this.Заявки = new HashSet<Заявки>();
         }
     
         public int ID { get; set; }
@@ -33,5 +34,7 @@ namespace HouseManagement
         public virtual ICollection<ОтчетПоОплате> ОтчетПоОплате { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<СписокЗадолженностей> СписокЗадолженностей { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Заявки> Заявки { get; set; }
     }
 }

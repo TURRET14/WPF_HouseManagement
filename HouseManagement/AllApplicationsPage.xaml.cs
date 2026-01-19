@@ -60,5 +60,10 @@ namespace HouseManagement
                 }
             }
         }
+
+        private void Button_ApplicationsCompletetionHistory_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new ApplicationsCompletionHistory());
+        }
     }
 }

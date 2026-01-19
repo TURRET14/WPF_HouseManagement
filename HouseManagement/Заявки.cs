@@ -15,15 +15,18 @@ namespace HouseManagement
     public partial class Заявки
     {
         public int ID { get; set; }
-        public string Адрес { get; set; }
+        public int Адрес { get; set; }
         public int ID_Жильца { get; set; }
         public string Телефон { get; set; }
         public string Описание_Проблемы { get; set; }
         public int Ответственный_Исполнитель { get; set; }
         public int СтатусЗаявки { get; set; }
+        public Nullable<System.DateTime> Дата_Выполнения_Заявки { get; set; }
+        public int НомерКвартиры { get; set; }
     
         public virtual Жильцы Жильцы { get; set; }
         public virtual Сотрудники Сотрудники { get; set; }
         public virtual СтатусыЗаявок СтатусыЗаявок { get; set; }
+        public virtual СписокЖилогоФонда СписокЖилогоФонда { get; set; }
     }
 }

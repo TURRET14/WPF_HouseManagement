@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище Emelyanenko_HouseManagementModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище Emelyanenko_HouseManagementModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Должности">
           <Key>
             <PropertyRef Name="ID" />
@@ -24,12 +24,14 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Адрес" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Адрес" Type="int" Nullable="false" />
           <Property Name="ID_Жильца" Type="int" Nullable="false" />
           <Property Name="Телефон" Type="varchar" MaxLength="50" />
           <Property Name="Описание_Проблемы" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="Ответственный_Исполнитель" Type="int" Nullable="false" />
           <Property Name="СтатусЗаявки" Type="int" Nullable="false" />
+          <Property Name="Дата_Выполнения_Заявки" Type="datetime" />
+          <Property Name="НомерКвартиры" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="ОтчетПоОплате">
           <Key>
@@ -94,6 +96,18 @@
             </Principal>
             <Dependent Role="Заявки">
               <PropertyRef Name="ID_Жильца" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Заявки__Адрес__0E6E26BF">
+          <End Role="СписокЖилогоФонда" Type="Self.СписокЖилогоФонда" Multiplicity="1" />
+          <End Role="Заявки" Type="Self.Заявки" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="СписокЖилогоФонда">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Заявки">
+              <PropertyRef Name="Адрес" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -208,6 +222,10 @@
             <End Role="Жильцы" EntitySet="Жильцы" />
             <End Role="Заявки" EntitySet="Заявки" />
           </AssociationSet>
+          <AssociationSet Name="FK__Заявки__Адрес__0E6E26BF" Association="Self.FK__Заявки__Адрес__0E6E26BF">
+            <End Role="СписокЖилогоФонда" EntitySet="СписокЖилогоФонда" />
+            <End Role="Заявки" EntitySet="Заявки" />
+          </AssociationSet>
           <AssociationSet Name="FK__Заявки__Ответств__0C85DE4D" Association="Self.FK__Заявки__Ответств__0C85DE4D">
             <End Role="Сотрудники" EntitySet="Сотрудники" />
             <End Role="Заявки" EntitySet="Заявки" />
@@ -237,8 +255,7 @@
             <End Role="СписокЗадолженностей" EntitySet="СписокЗадолженностей" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Emelyanenko_HouseManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -265,7 +282,7 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Адрес" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Адрес" Type="Int32" Nullable="false" />
           <Property Name="ID_Жильца" Type="Int32" Nullable="false" />
           <Property Name="Телефон" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Описание_Проблемы" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
@@ -274,6 +291,9 @@
           <NavigationProperty Name="Жильцы" Relationship="Self.FK__Заявки__ID_Жильц__0B91BA14" FromRole="Заявки" ToRole="Жильцы" />
           <NavigationProperty Name="Сотрудники" Relationship="Self.FK__Заявки__Ответств__0C85DE4D" FromRole="Заявки" ToRole="Сотрудники" />
           <NavigationProperty Name="СтатусыЗаявок" Relationship="Self.FK__Заявки__СтатусЗа__0D7A0286" FromRole="Заявки" ToRole="СтатусыЗаявок" />
+          <Property Name="Дата_Выполнения_Заявки" Type="DateTime" Precision="3" />
+          <Property Name="НомерКвартиры" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="СписокЖилогоФонда" Relationship="Emelyanenko_HouseManagementModel.FK__Заявки__Адрес__0E6E26BF" FromRole="Заявки" ToRole="СписокЖилогоФонда" />
         </EntityType>
         <EntityType Name="ОтчетПоОплате">
           <Key>
@@ -313,6 +333,7 @@
           <Property Name="Площадь_м2" Type="Double" Nullable="false" />
           <NavigationProperty Name="ОтчетПоОплате" Relationship="Self.FK_ОтчетПоОплате_СписокЖилогоФонда" FromRole="СписокЖилогоФонда" ToRole="ОтчетПоОплате" />
           <NavigationProperty Name="СписокЗадолженностей" Relationship="Self.FK_СписокЗадолженностей_СписокЖилогоФонда" FromRole="СписокЖилогоФонда" ToRole="СписокЗадолженностей" />
+          <NavigationProperty Name="Заявки" Relationship="Emelyanenko_HouseManagementModel.FK__Заявки__Адрес__0E6E26BF" FromRole="СписокЖилогоФонда" ToRole="Заявки" />
         </EntityType>
         <EntityType Name="СписокЗадолженностей">
           <Key>
@@ -489,7 +510,23 @@
             <End Role="СписокЖилогоФонда" EntitySet="СписокЖилогоФонда" />
             <End Role="СписокЗадолженностей" EntitySet="СписокЗадолженностей" />
           </AssociationSet>
+          <AssociationSet Name="FK__Заявки__Адрес__0E6E26BF" Association="Emelyanenko_HouseManagementModel.FK__Заявки__Адрес__0E6E26BF">
+            <End Role="СписокЖилогоФонда" EntitySet="СписокЖилогоФонда" />
+            <End Role="Заявки" EntitySet="Заявки" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK__Заявки__Адрес__0E6E26BF">
+          <End Type="Emelyanenko_HouseManagementModel.СписокЖилогоФонда" Role="СписокЖилогоФонда" Multiplicity="1" />
+          <End Type="Emelyanenko_HouseManagementModel.Заявки" Role="Заявки" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="СписокЖилогоФонда">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Заявки">
+              <PropertyRef Name="Адрес" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -515,6 +552,8 @@
           <EntitySetMapping Name="Заявки">
             <EntityTypeMapping TypeName="Emelyanenko_HouseManagementModel.Заявки">
               <MappingFragment StoreEntitySet="Заявки">
+                <ScalarProperty Name="НомерКвартиры" ColumnName="НомерКвартиры" />
+                <ScalarProperty Name="Дата_Выполнения_Заявки" ColumnName="Дата_Выполнения_Заявки" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Адрес" ColumnName="Адрес" />
                 <ScalarProperty Name="ID_Жильца" ColumnName="ID_Жильца" />

@@ -4,6 +4,5 @@
              xmlns:local="clr-namespace:HouseManagement"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <ResourceDictionary Source="/Dictionary1.xaml"></ResourceDictionary>
     </Application.Resources>
 </Application>
