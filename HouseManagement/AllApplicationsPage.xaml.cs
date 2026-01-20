@@ -23,12 +23,12 @@ namespace HouseManagement
         public ApplicationsPage()
         {
             InitializeComponent();
-            DataGrid_Main.ItemsSource = Emelyanenko_HouseManagementEntities.GetInstance().Заявки.ToList();
+            DataGrid_Main.ItemsSource = Emelyanenko_HouseManagementEntities.GetInstance().Applications.ToList();
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            DataGrid_Main.ItemsSource = Emelyanenko_HouseManagementEntities.GetInstance().Заявки.ToList();
+            DataGrid_Main.ItemsSource = Emelyanenko_HouseManagementEntities.GetInstance().Applications.ToList();
         }
 
         private void Button_Create_Click(object sender, RoutedEventArgs e)
@@ -38,7 +38,7 @@ namespace HouseManagement
 
         private void DataGridRow_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            NavigationService.Navigate(new AddApplicationPage(DataGrid_Main.SelectedItem as Заявки));
+            NavigationService.Navigate(new AddApplicationPage(DataGrid_Main.SelectedItem as Applications));
         }
 
         private void Button_Delete_Click(object sender, RoutedEventArgs e)
@@ -49,9 +49,9 @@ namespace HouseManagement
                 {
                     try
                     {
-                        Emelyanenko_HouseManagementEntities.GetInstance().Заявки.Remove(DataGrid_Main.SelectedItem as Заявки);
+                        Emelyanenko_HouseManagementEntities.GetInstance().Applications.Remove(DataGrid_Main.SelectedItem as Applications);
                         Emelyanenko_HouseManagementEntities.GetInstance().SaveChanges();
-                        DataGrid_Main.ItemsSource = Emelyanenko_HouseManagementEntities.GetInstance().Заявки.ToList();
+                        DataGrid_Main.ItemsSource = Emelyanenko_HouseManagementEntities.GetInstance().Applications.ToList();
                     }
                     catch (Exception ex)
                     {

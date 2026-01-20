@@ -38,14 +38,14 @@
                 </Style>
             </DataGrid.RowStyle>
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding СписокЖилогоФонда.Адрес}" Header="Адрес"></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding НомерКвартиры}" Header="Номер квартиры"></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Жильцы.ФИО}" Header="Заявитель"></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Телефон}" Header="Контактный телефон"></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Описание_Проблемы}" Header="Описание проблемы"></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Сотрудники.ФИО}" Header="Ответственный исполнитель"></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding СтатусыЗаявок.Название}" Header="Статус заявки"></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Дата_Выполнения_Заявки}" Header="Дата выполнения заявки"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding AllAddresses.Name}" Header="Адрес"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding FlatNumber}" Header="Номер квартиры"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Residents.FIO}" Header="Заявитель"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding PhoneNumber}" Header="Контактный телефон"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding ProblemDescription}" Header="Описание проблемы"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Employees.FIO}" Header="Ответственный исполнитель"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding ApplicationStatuses.Name}" Header="Статус заявки"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding DateOfCompletion}" Header="Дата выполнения заявки"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

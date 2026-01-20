@@ -12,29 +12,29 @@ namespace HouseManagement
     using System;
     using System.Collections.Generic;
     
-    public partial class СписокЖилогоФонда
+    public partial class AllAddresses
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public СписокЖилогоФонда()
+        public AllAddresses()
         {
-            this.ОтчетПоОплате = new HashSet<ОтчетПоОплате>();
-            this.СписокЗадолженностей = new HashSet<СписокЗадолженностей>();
-            this.Заявки = new HashSet<Заявки>();
+            this.DebtsList = new HashSet<DebtsList>();
+            this.PaymentReport = new HashSet<PaymentReport>();
+            this.Applications = new HashSet<Applications>();
         }
     
         public int ID { get; set; }
-        public string Адрес { get; set; }
-        public System.DateTime Начало_управления { get; set; }
-        public int Этажей { get; set; }
-        public Nullable<int> Квартир { get; set; }
-        public int Год { get; set; }
-        public double Площадь_м2 { get; set; }
+        public string Name { get; set; }
+        public System.DateTime StartOfManagement { get; set; }
+        public int NumberOfStories { get; set; }
+        public Nullable<int> NumberOfFlats { get; set; }
+        public int Year { get; set; }
+        public double AreaM2 { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ОтчетПоОплате> ОтчетПоОплате { get; set; }
+        public virtual ICollection<DebtsList> DebtsList { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<СписокЗадолженностей> СписокЗадолженностей { get; set; }
+        public virtual ICollection<PaymentReport> PaymentReport { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Заявки> Заявки { get; set; }
+        public virtual ICollection<Applications> Applications { get; set; }
     }
 }

@@ -20,17 +20,17 @@ namespace HouseManagement
     /// </summary>
     public partial class AddApplicationPage : Page
     {
-        private Заявки selected;
+        private Applications selected;
         private bool isNew;
         public AddApplicationPage()
         {
             InitializeComponent();
-            selected = new Заявки();
+            selected = new Applications();
             isNew = true;
             SetDataContext();
         }
 
-        public AddApplicationPage(Заявки selected)
+        public AddApplicationPage(Applications selected)
         {
             InitializeComponent();
             this.selected = selected;
@@ -41,10 +41,10 @@ namespace HouseManagement
         public void SetDataContext()
         {
             DataContext = selected;
-            ComboBox_Address.ItemsSource = Emelyanenko_HouseManagementEntities.GetInstance().СписокЖилогоФонда.ToList();
-            ComboBox_Employee.ItemsSource = Emelyanenko_HouseManagementEntities.GetInstance().Сотрудники.ToList();
-            ComboBox_Resident.ItemsSource = Emelyanenko_HouseManagementEntities.GetInstance().Жильцы.ToList();
-            ComboBox_Status.ItemsSource = Emelyanenko_HouseManagementEntities.GetInstance().СтатусыЗаявок.ToList();
+            ComboBox_Address.ItemsSource = Emelyanenko_HouseManagementEntities.GetInstance().AllAddresses.ToList();
+            ComboBox_Employee.ItemsSource = Emelyanenko_HouseManagementEntities.GetInstance().Employees.ToList();
+            ComboBox_Resident.ItemsSource = Emelyanenko_HouseManagementEntities.GetInstance().Residents.ToList();
+            ComboBox_Status.ItemsSource = Emelyanenko_HouseManagementEntities.GetInstance().ApplicationStatuses.ToList();
         }
 
         private void Button_Save_Click(object sender, RoutedEventArgs e)
@@ -93,16 +93,16 @@ namespace HouseManagement
             {
                 if (isNew)
                 {
-                    Emelyanenko_HouseManagementEntities.GetInstance().Заявки.Add(selected);
+                    Emelyanenko_HouseManagementEntities.GetInstance().Applications.Add(selected);
                 }
 
-                if (selected.СтатусыЗаявок.Название == "Завершена")
+                if (selected.ApplicationStatuses.Name == "Завершена")
                 {
-                    selected.Дата_Выполнения_Заявки = DateTime.Now;
+                    selected.DateOfCompletion = DateTime.Now;
                 }
                 else
                 {
-                    selected.Дата_Выполнения_Заявки = null;
+                    selected.DateOfCompletion = null;
                 }
 
                 Emelyanenko_HouseManagementEntities.GetInstance().SaveChanges();

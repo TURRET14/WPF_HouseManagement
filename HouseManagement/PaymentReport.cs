@@ -12,17 +12,17 @@ namespace HouseManagement
     using System;
     using System.Collections.Generic;
     
-    public partial class ОтчетПоОплате
+    public partial class PaymentReport
     {
         public int ID { get; set; }
-        public int ID_Собственника { get; set; }
-        public int ID_Адреса { get; set; }
-        public int Квартира { get; set; }
-        public string Период { get; set; }
-        public decimal Начислено { get; set; }
-        public Nullable<decimal> Оплачено { get; set; }
+        public int OwnerID { get; set; }
+        public int AddressID { get; set; }
+        public int FlatNumber { get; set; }
+        public string Period { get; set; }
+        public decimal Credited { get; set; }
+        public Nullable<decimal> Paid { get; set; }
     
-        public virtual Жильцы Жильцы { get; set; }
-        public virtual СписокЖилогоФонда СписокЖилогоФонда { get; set; }
+        public virtual AllAddresses AllAddresses { get; set; }
+        public virtual Residents Residents { get; set; }
     }
 }

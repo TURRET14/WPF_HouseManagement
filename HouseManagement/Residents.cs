@@ -12,18 +12,24 @@ namespace HouseManagement
     using System;
     using System.Collections.Generic;
     
-    public partial class СтатусыЗаявок
+    public partial class Residents
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public СтатусыЗаявок()
+        public Residents()
         {
-            this.Заявки = new HashSet<Заявки>();
+            this.DebtsList = new HashSet<DebtsList>();
+            this.PaymentReport = new HashSet<PaymentReport>();
+            this.Applications = new HashSet<Applications>();
         }
     
         public int ID { get; set; }
-        public string Название { get; set; }
+        public string FIO { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Заявки> Заявки { get; set; }
+        public virtual ICollection<DebtsList> DebtsList { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PaymentReport> PaymentReport { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Applications> Applications { get; set; }
     }
 }

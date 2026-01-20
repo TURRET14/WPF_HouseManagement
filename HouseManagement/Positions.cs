@@ -12,17 +12,18 @@ namespace HouseManagement
     using System;
     using System.Collections.Generic;
     
-    public partial class СписокЗадолженностей
+    public partial class Positions
     {
-        public int ID { get; set; }
-        public int ID_Адреса { get; set; }
-        public int Квартира { get; set; }
-        public int ID_Владельца { get; set; }
-        public string Телефон { get; set; }
-        public decimal Вода { get; set; }
-        public Nullable<decimal> Электроэнергия { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Positions()
+        {
+            this.Employees = new HashSet<Employees>();
+        }
     
-        public virtual Жильцы Жильцы { get; set; }
-        public virtual СписокЖилогоФонда СписокЖилогоФонда { get; set; }
+        public int ID { get; set; }
+        public string Name { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Employees> Employees { get; set; }
     }
 }

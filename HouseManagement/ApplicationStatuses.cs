@@ -12,24 +12,18 @@ namespace HouseManagement
     using System;
     using System.Collections.Generic;
     
-    public partial class Жильцы
+    public partial class ApplicationStatuses
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Жильцы()
+        public ApplicationStatuses()
         {
-            this.Заявки = new HashSet<Заявки>();
-            this.ОтчетПоОплате = new HashSet<ОтчетПоОплате>();
-            this.СписокЗадолженностей = new HashSet<СписокЗадолженностей>();
+            this.Applications = new HashSet<Applications>();
         }
     
         public int ID { get; set; }
-        public string ФИО { get; set; }
+        public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Заявки> Заявки { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ОтчетПоОплате> ОтчетПоОплате { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<СписокЗадолженностей> СписокЗадолженностей { get; set; }
+        public virtual ICollection<Applications> Applications { get; set; }
     }
 }

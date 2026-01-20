@@ -35,13 +35,13 @@ namespace HouseManagement
             return instance;
         }
 
-        public virtual DbSet<Должности> Должности { get; set; }
-        public virtual DbSet<Жильцы> Жильцы { get; set; }
-        public virtual DbSet<Заявки> Заявки { get; set; }
-        public virtual DbSet<ОтчетПоОплате> ОтчетПоОплате { get; set; }
-        public virtual DbSet<Сотрудники> Сотрудники { get; set; }
-        public virtual DbSet<СписокЖилогоФонда> СписокЖилогоФонда { get; set; }
-        public virtual DbSet<СписокЗадолженностей> СписокЗадолженностей { get; set; }
-        public virtual DbSet<СтатусыЗаявок> СтатусыЗаявок { get; set; }
+        public virtual DbSet<AllAddresses> AllAddresses { get; set; }
+        public virtual DbSet<ApplicationStatuses> ApplicationStatuses { get; set; }
+        public virtual DbSet<DebtsList> DebtsList { get; set; }
+        public virtual DbSet<Employees> Employees { get; set; }
+        public virtual DbSet<PaymentReport> PaymentReport { get; set; }
+        public virtual DbSet<Positions> Positions { get; set; }
+        public virtual DbSet<Residents> Residents { get; set; }
+        public virtual DbSet<Applications> Applications { get; set; }
     }
 }

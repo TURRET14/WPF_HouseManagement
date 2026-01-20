@@ -20,19 +20,19 @@ namespace HouseManagement
     /// </summary>
     public partial class ApplicationsCompletionHistory : Page
     {
-        Сотрудники selectAllEmployeesObject = new Сотрудники() { ФИО = "Все сотрудники" };
-        СписокЖилогоФонда selectAllAddressesObject = new СписокЖилогоФонда() { Адрес = "Все адреса" };
+        Employees selectAllEmployeesObject = new Employees() { FIO = "Все Сотрудники" };
+        AllAddresses selectAllAddressesObject = new AllAddresses() { Name = "Все адреса" };
         public ApplicationsCompletionHistory()
         {
             InitializeComponent();
-            DataGrid_Main.ItemsSource = Emelyanenko_HouseManagementEntities.GetInstance().Заявки.Where((application) => application.СтатусыЗаявок.Название == "Завершена").ToList();
+            DataGrid_Main.ItemsSource = Emelyanenko_HouseManagementEntities.GetInstance().Applications.Where((application) => application.ApplicationStatuses.Name == "Завершена").ToList();
 
 
-            List<Сотрудники> employeesList = Emelyanenko_HouseManagementEntities.GetInstance().Сотрудники.ToList();
+            List<Employees> employeesList = Emelyanenko_HouseManagementEntities.GetInstance().Employees.ToList();
             employeesList.Add(selectAllEmployeesObject);
             ComboBox_Employee.ItemsSource = employeesList;
 
-            List<СписокЖилогоФонда> addressesList = Emelyanenko_HouseManagementEntities.GetInstance().СписокЖилогоФонда.ToList();
+            List<AllAddresses> addressesList = Emelyanenko_HouseManagementEntities.GetInstance().AllAddresses.ToList();
             addressesList.Add(selectAllAddressesObject);
             ComboBox_Address.ItemsSource = addressesList;
         }
@@ -49,12 +49,12 @@ namespace HouseManagement
 
         private void Filter()
         {
-            List<Заявки> list = Emelyanenko_HouseManagementEntities.GetInstance().Заявки.Where((application) => application.СтатусыЗаявок.Название == "Завершена").ToList();
+            List<Applications> list = Emelyanenko_HouseManagementEntities.GetInstance().Applications.Where((application) => application.ApplicationStatuses.Name == "Завершена").ToList();
             if (ComboBox_Employee.SelectedItem != null)
             {
                 if (ComboBox_Employee.SelectedItem != selectAllEmployeesObject)
                 {
-                    list = list.Where((application) => application.Сотрудники == ComboBox_Employee.SelectedItem).ToList();
+                    list = list.Where((application) => application.Employees == ComboBox_Employee.SelectedItem).ToList();
                 }
             }
 
@@ -62,7 +62,7 @@ namespace HouseManagement
             {
                 if (ComboBox_Address.SelectedItem != selectAllAddressesObject)
                 {
-                    list = list.Where((application) => application.СписокЖилогоФонда == ComboBox_Address.SelectedItem).ToList();
+                    list = list.Where((application) => application.AllAddresses == ComboBox_Address.SelectedItem).ToList();
                 }
             }
 

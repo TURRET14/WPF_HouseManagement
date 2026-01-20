@@ -28,22 +28,22 @@
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Row="0" Grid.Column="0" Text="Сотрудник"></TextBlock>
-            <ComboBox Name="ComboBox_Employee" Grid.Row="0" Grid.Column="1" DisplayMemberPath="ФИО" SelectionChanged="ComboBox_Employee_SelectionChanged"></ComboBox>
+            <ComboBox Name="ComboBox_Employee" Grid.Row="0" Grid.Column="1" DisplayMemberPath="FIO" SelectionChanged="ComboBox_Employee_SelectionChanged"></ComboBox>
 
             <TextBlock Grid.Row="1" Grid.Column="0" Text="Адрес"></TextBlock>
-            <ComboBox Name="ComboBox_Address" Grid.Row="1" Grid.Column="1" DisplayMemberPath="Адрес" SelectionChanged="TextBox_Address_SelectionChanged"></ComboBox>
+            <ComboBox Name="ComboBox_Address" Grid.Row="1" Grid.Column="1" DisplayMemberPath="Name" SelectionChanged="TextBox_Address_SelectionChanged"></ComboBox>
         </Grid>
         
         <DataGrid Name="DataGrid_Main" Grid.Row="2" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding СписокЖилогоФонда.Адрес}" Header="Адрес"></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding НомерКвартиры}" Header="Номер квартиры"></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Жильцы.ФИО}" Header="Заявитель"></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Телефон}" Header="Контактный телефон"></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Описание_Проблемы}" Header="Описание проблемы"></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Сотрудники.ФИО}" Header="Ответственный исполнитель"></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding СтатусыЗаявок.Название}" Header="Статус заявки"></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Дата_Выполнения_Заявки}" Header="Дата выполнения заявки"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding AllAddresses.Name}" Header="Адрес"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding FlatNumber}" Header="Номер квартиры"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Residents.FIO}" Header="Заявитель"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding PhoneNumber}" Header="Контактный телефон"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding ProblemDescription}" Header="Описание проблемы"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Employees.FIO}" Header="Ответственный исполнитель"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding ApplicationStatuses.Name}" Header="Статус заявки"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding DateOfCompletion}" Header="Дата выполнения заявки"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

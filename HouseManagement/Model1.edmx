@@ -5,525 +5,525 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="Хранилище Emelyanenko_HouseManagementModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Должности">
+        <EntityType Name="AllAddresses">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Название" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="StartOfManagement" Type="date" Nullable="false" />
+          <Property Name="NumberOfStories" Type="int" Nullable="false" />
+          <Property Name="NumberOfFlats" Type="int" />
+          <Property Name="Year" Type="int" Nullable="false" />
+          <Property Name="AreaM2" Type="float" Nullable="false" />
         </EntityType>
-        <EntityType Name="Жильцы">
+        <EntityType Name="Applications">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ФИО" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="AddressID" Type="int" Nullable="false" />
+          <Property Name="ResidentID" Type="int" Nullable="false" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="50" />
+          <Property Name="ProblemDescription" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="ApplicationStatusID" Type="int" Nullable="false" />
+          <Property Name="DateOfCompletion" Type="datetime" />
+          <Property Name="FlatNumber" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="Заявки">
+        <EntityType Name="ApplicationStatuses">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Адрес" Type="int" Nullable="false" />
-          <Property Name="ID_Жильца" Type="int" Nullable="false" />
-          <Property Name="Телефон" Type="varchar" MaxLength="50" />
-          <Property Name="Описание_Проблемы" Type="varchar" MaxLength="500" Nullable="false" />
-          <Property Name="Ответственный_Исполнитель" Type="int" Nullable="false" />
-          <Property Name="СтатусЗаявки" Type="int" Nullable="false" />
-          <Property Name="Дата_Выполнения_Заявки" Type="datetime" />
-          <Property Name="НомерКвартиры" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
-        <EntityType Name="ОтчетПоОплате">
+        <EntityType Name="DebtsList">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ID_Собственника" Type="int" Nullable="false" />
-          <Property Name="ID_Адреса" Type="int" Nullable="false" />
-          <Property Name="Квартира" Type="int" Nullable="false" />
-          <Property Name="Период" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Начислено" Type="numeric" Precision="15" Scale="2" Nullable="false" />
-          <Property Name="Оплачено" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="AddressID" Type="int" Nullable="false" />
+          <Property Name="FlatNumber" Type="int" Nullable="false" />
+          <Property Name="OwnerID" Type="int" Nullable="false" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Water" Type="numeric" Precision="15" Scale="2" Nullable="false" />
+          <Property Name="Electricity" Type="numeric" Precision="15" Scale="2" />
         </EntityType>
-        <EntityType Name="Сотрудники">
+        <EntityType Name="Employees">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ФИО" Type="varchar" MaxLength="150" Nullable="false" />
-          <Property Name="Телефон" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Должность" Type="int" Nullable="false" />
+          <Property Name="FIO" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PositionID" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="СписокЖилогоФонда">
+        <EntityType Name="PaymentReport">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Адрес" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Начало_управления" Type="date" Nullable="false" />
-          <Property Name="Этажей" Type="int" Nullable="false" />
-          <Property Name="Квартир" Type="int" />
-          <Property Name="Год" Type="int" Nullable="false" />
-          <Property Name="Площадь_м2" Type="float" Nullable="false" />
+          <Property Name="OwnerID" Type="int" Nullable="false" />
+          <Property Name="AddressID" Type="int" Nullable="false" />
+          <Property Name="FlatNumber" Type="int" Nullable="false" />
+          <Property Name="Period" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Credited" Type="numeric" Precision="15" Scale="2" Nullable="false" />
+          <Property Name="Paid" Type="numeric" Precision="15" Scale="2" />
         </EntityType>
-        <EntityType Name="СписокЗадолженностей">
+        <EntityType Name="Positions">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ID_Адреса" Type="int" Nullable="false" />
-          <Property Name="Квартира" Type="int" Nullable="false" />
-          <Property Name="ID_Владельца" Type="int" Nullable="false" />
-          <Property Name="Телефон" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Вода" Type="numeric" Precision="15" Scale="2" Nullable="false" />
-          <Property Name="Электроэнергия" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
-        <EntityType Name="СтатусыЗаявок">
+        <EntityType Name="Residents">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Название" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="FIO" Type="nvarchar" MaxLength="150" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Заявки__ID_Жильц__0B91BA14">
-          <End Role="Жильцы" Type="Self.Жильцы" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Заявки" Type="Self.Заявки" Multiplicity="*" />
+        <Association Name="FK__Applicati__Addre__5070F446">
+          <End Role="AllAddresses" Type="Self.AllAddresses" Multiplicity="1" />
+          <End Role="Applications" Type="Self.Applications" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Жильцы">
+            <Principal Role="AllAddresses">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="Заявки">
-              <PropertyRef Name="ID_Жильца" />
+            <Dependent Role="Applications">
+              <PropertyRef Name="AddressID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Заявки__Адрес__0E6E26BF">
-          <End Role="СписокЖилогоФонда" Type="Self.СписокЖилогоФонда" Multiplicity="1" />
-          <End Role="Заявки" Type="Self.Заявки" Multiplicity="*" />
+        <Association Name="FK__Applicati__Appli__5AEE82B9">
+          <End Role="ApplicationStatuses" Type="Self.ApplicationStatuses" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Applications" Type="Self.Applications" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="СписокЖилогоФонда">
+            <Principal Role="ApplicationStatuses">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="Заявки">
-              <PropertyRef Name="Адрес" />
+            <Dependent Role="Applications">
+              <PropertyRef Name="ApplicationStatusID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Заявки__Ответств__0C85DE4D">
-          <End Role="Сотрудники" Type="Self.Сотрудники" Multiplicity="1">
+        <Association Name="FK__Applicati__Emplo__59FA5E80">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Заявки" Type="Self.Заявки" Multiplicity="*" />
+          <End Role="Applications" Type="Self.Applications" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Сотрудники">
+            <Principal Role="Employees">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="Заявки">
-              <PropertyRef Name="Ответственный_Исполнитель" />
+            <Dependent Role="Applications">
+              <PropertyRef Name="EmployeeID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Заявки__СтатусЗа__0D7A0286">
-          <End Role="СтатусыЗаявок" Type="Self.СтатусыЗаявок" Multiplicity="1">
+        <Association Name="FK__Applicati__Resid__59063A47">
+          <End Role="Residents" Type="Self.Residents" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Заявки" Type="Self.Заявки" Multiplicity="*" />
+          <End Role="Applications" Type="Self.Applications" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="СтатусыЗаявок">
+            <Principal Role="Residents">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="Заявки">
-              <PropertyRef Name="СтатусЗаявки" />
+            <Dependent Role="Applications">
+              <PropertyRef Name="ResidentID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Сотрудник__Должн__06CD04F7">
-          <End Role="Должности" Type="Self.Должности" Multiplicity="1">
+        <Association Name="FK__Employees__Posit__5DCAEF64">
+          <End Role="Positions" Type="Self.Positions" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Сотрудники" Type="Self.Сотрудники" Multiplicity="*" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Должности">
+            <Principal Role="Positions">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="Сотрудники">
-              <PropertyRef Name="Должность" />
+            <Dependent Role="Employees">
+              <PropertyRef Name="PositionID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ОтчетПоОплате_Жильцы">
-          <End Role="Жильцы" Type="Self.Жильцы" Multiplicity="1">
+        <Association Name="FK_DebtsList_AllAddresses">
+          <End Role="AllAddresses" Type="Self.AllAddresses" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="ОтчетПоОплате" Type="Self.ОтчетПоОплате" Multiplicity="*" />
+          <End Role="DebtsList" Type="Self.DebtsList" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Жильцы">
+            <Principal Role="AllAddresses">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="ОтчетПоОплате">
-              <PropertyRef Name="ID_Собственника" />
+            <Dependent Role="DebtsList">
+              <PropertyRef Name="AddressID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ОтчетПоОплате_СписокЖилогоФонда">
-          <End Role="СписокЖилогоФонда" Type="Self.СписокЖилогоФонда" Multiplicity="1">
+        <Association Name="FK_DebtsList_Residents">
+          <End Role="Residents" Type="Self.Residents" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="ОтчетПоОплате" Type="Self.ОтчетПоОплате" Multiplicity="*" />
+          <End Role="DebtsList" Type="Self.DebtsList" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="СписокЖилогоФонда">
+            <Principal Role="Residents">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="ОтчетПоОплате">
-              <PropertyRef Name="ID_Адреса" />
+            <Dependent Role="DebtsList">
+              <PropertyRef Name="OwnerID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_СписокЗадолженностей_Жильцы">
-          <End Role="Жильцы" Type="Self.Жильцы" Multiplicity="1">
+        <Association Name="FK_PaymentReport_AllAddresses">
+          <End Role="AllAddresses" Type="Self.AllAddresses" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="СписокЗадолженностей" Type="Self.СписокЗадолженностей" Multiplicity="*" />
+          <End Role="PaymentReport" Type="Self.PaymentReport" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Жильцы">
+            <Principal Role="AllAddresses">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="СписокЗадолженностей">
-              <PropertyRef Name="ID_Владельца" />
+            <Dependent Role="PaymentReport">
+              <PropertyRef Name="AddressID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_СписокЗадолженностей_СписокЖилогоФонда">
-          <End Role="СписокЖилогоФонда" Type="Self.СписокЖилогоФонда" Multiplicity="1">
+        <Association Name="FK_PaymentReport_Residents">
+          <End Role="Residents" Type="Self.Residents" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="СписокЗадолженностей" Type="Self.СписокЗадолженностей" Multiplicity="*" />
+          <End Role="PaymentReport" Type="Self.PaymentReport" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="СписокЖилогоФонда">
+            <Principal Role="Residents">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="СписокЗадолженностей">
-              <PropertyRef Name="ID_Адреса" />
+            <Dependent Role="PaymentReport">
+              <PropertyRef Name="OwnerID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="Хранилище Emelyanenko_HouseManagementModelContainer">
-          <EntitySet Name="Должности" EntityType="Self.Должности" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Жильцы" EntityType="Self.Жильцы" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Заявки" EntityType="Self.Заявки" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ОтчетПоОплате" EntityType="Self.ОтчетПоОплате" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Сотрудники" EntityType="Self.Сотрудники" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="СписокЖилогоФонда" EntityType="Self.СписокЖилогоФонда" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="СписокЗадолженностей" EntityType="Self.СписокЗадолженностей" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="СтатусыЗаявок" EntityType="Self.СтатусыЗаявок" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Заявки__ID_Жильц__0B91BA14" Association="Self.FK__Заявки__ID_Жильц__0B91BA14">
-            <End Role="Жильцы" EntitySet="Жильцы" />
-            <End Role="Заявки" EntitySet="Заявки" />
+          <EntitySet Name="AllAddresses" EntityType="Self.AllAddresses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Applications" EntityType="Self.Applications" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ApplicationStatuses" EntityType="Self.ApplicationStatuses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DebtsList" EntityType="Self.DebtsList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentReport" EntityType="Self.PaymentReport" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Positions" EntityType="Self.Positions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Residents" EntityType="Self.Residents" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Applicati__Addre__5070F446" Association="Self.FK__Applicati__Addre__5070F446">
+            <End Role="AllAddresses" EntitySet="AllAddresses" />
+            <End Role="Applications" EntitySet="Applications" />
           </AssociationSet>
-          <AssociationSet Name="FK__Заявки__Адрес__0E6E26BF" Association="Self.FK__Заявки__Адрес__0E6E26BF">
-            <End Role="СписокЖилогоФонда" EntitySet="СписокЖилогоФонда" />
-            <End Role="Заявки" EntitySet="Заявки" />
+          <AssociationSet Name="FK__Applicati__Appli__5AEE82B9" Association="Self.FK__Applicati__Appli__5AEE82B9">
+            <End Role="ApplicationStatuses" EntitySet="ApplicationStatuses" />
+            <End Role="Applications" EntitySet="Applications" />
           </AssociationSet>
-          <AssociationSet Name="FK__Заявки__Ответств__0C85DE4D" Association="Self.FK__Заявки__Ответств__0C85DE4D">
-            <End Role="Сотрудники" EntitySet="Сотрудники" />
-            <End Role="Заявки" EntitySet="Заявки" />
+          <AssociationSet Name="FK__Applicati__Emplo__59FA5E80" Association="Self.FK__Applicati__Emplo__59FA5E80">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Applications" EntitySet="Applications" />
           </AssociationSet>
-          <AssociationSet Name="FK__Заявки__СтатусЗа__0D7A0286" Association="Self.FK__Заявки__СтатусЗа__0D7A0286">
-            <End Role="СтатусыЗаявок" EntitySet="СтатусыЗаявок" />
-            <End Role="Заявки" EntitySet="Заявки" />
+          <AssociationSet Name="FK__Applicati__Resid__59063A47" Association="Self.FK__Applicati__Resid__59063A47">
+            <End Role="Residents" EntitySet="Residents" />
+            <End Role="Applications" EntitySet="Applications" />
           </AssociationSet>
-          <AssociationSet Name="FK__Сотрудник__Должн__06CD04F7" Association="Self.FK__Сотрудник__Должн__06CD04F7">
-            <End Role="Должности" EntitySet="Должности" />
-            <End Role="Сотрудники" EntitySet="Сотрудники" />
+          <AssociationSet Name="FK__Employees__Posit__5DCAEF64" Association="Self.FK__Employees__Posit__5DCAEF64">
+            <End Role="Positions" EntitySet="Positions" />
+            <End Role="Employees" EntitySet="Employees" />
           </AssociationSet>
-          <AssociationSet Name="FK_ОтчетПоОплате_Жильцы" Association="Self.FK_ОтчетПоОплате_Жильцы">
-            <End Role="Жильцы" EntitySet="Жильцы" />
-            <End Role="ОтчетПоОплате" EntitySet="ОтчетПоОплате" />
+          <AssociationSet Name="FK_DebtsList_AllAddresses" Association="Self.FK_DebtsList_AllAddresses">
+            <End Role="AllAddresses" EntitySet="AllAddresses" />
+            <End Role="DebtsList" EntitySet="DebtsList" />
           </AssociationSet>
-          <AssociationSet Name="FK_ОтчетПоОплате_СписокЖилогоФонда" Association="Self.FK_ОтчетПоОплате_СписокЖилогоФонда">
-            <End Role="СписокЖилогоФонда" EntitySet="СписокЖилогоФонда" />
-            <End Role="ОтчетПоОплате" EntitySet="ОтчетПоОплате" />
+          <AssociationSet Name="FK_DebtsList_Residents" Association="Self.FK_DebtsList_Residents">
+            <End Role="Residents" EntitySet="Residents" />
+            <End Role="DebtsList" EntitySet="DebtsList" />
           </AssociationSet>
-          <AssociationSet Name="FK_СписокЗадолженностей_Жильцы" Association="Self.FK_СписокЗадолженностей_Жильцы">
-            <End Role="Жильцы" EntitySet="Жильцы" />
-            <End Role="СписокЗадолженностей" EntitySet="СписокЗадолженностей" />
+          <AssociationSet Name="FK_PaymentReport_AllAddresses" Association="Self.FK_PaymentReport_AllAddresses">
+            <End Role="AllAddresses" EntitySet="AllAddresses" />
+            <End Role="PaymentReport" EntitySet="PaymentReport" />
           </AssociationSet>
-          <AssociationSet Name="FK_СписокЗадолженностей_СписокЖилогоФонда" Association="Self.FK_СписокЗадолженностей_СписокЖилогоФонда">
-            <End Role="СписокЖилогоФонда" EntitySet="СписокЖилогоФонда" />
-            <End Role="СписокЗадолженностей" EntitySet="СписокЗадолженностей" />
+          <AssociationSet Name="FK_PaymentReport_Residents" Association="Self.FK_PaymentReport_Residents">
+            <End Role="Residents" EntitySet="Residents" />
+            <End Role="PaymentReport" EntitySet="PaymentReport" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Emelyanenko_HouseManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Должности">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Название" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Сотрудники" Relationship="Self.FK__Сотрудник__Должн__06CD04F7" FromRole="Должности" ToRole="Сотрудники" />
-        </EntityType>
-        <EntityType Name="Жильцы">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ФИО" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Заявки" Relationship="Self.FK__Заявки__ID_Жильц__0B91BA14" FromRole="Жильцы" ToRole="Заявки" />
-          <NavigationProperty Name="ОтчетПоОплате" Relationship="Self.FK_ОтчетПоОплате_Жильцы" FromRole="Жильцы" ToRole="ОтчетПоОплате" />
-          <NavigationProperty Name="СписокЗадолженностей" Relationship="Self.FK_СписокЗадолженностей_Жильцы" FromRole="Жильцы" ToRole="СписокЗадолженностей" />
-        </EntityType>
-        <EntityType Name="Заявки">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Адрес" Type="Int32" Nullable="false" />
-          <Property Name="ID_Жильца" Type="Int32" Nullable="false" />
-          <Property Name="Телефон" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Описание_Проблемы" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Ответственный_Исполнитель" Type="Int32" Nullable="false" />
-          <Property Name="СтатусЗаявки" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Жильцы" Relationship="Self.FK__Заявки__ID_Жильц__0B91BA14" FromRole="Заявки" ToRole="Жильцы" />
-          <NavigationProperty Name="Сотрудники" Relationship="Self.FK__Заявки__Ответств__0C85DE4D" FromRole="Заявки" ToRole="Сотрудники" />
-          <NavigationProperty Name="СтатусыЗаявок" Relationship="Self.FK__Заявки__СтатусЗа__0D7A0286" FromRole="Заявки" ToRole="СтатусыЗаявок" />
-          <Property Name="Дата_Выполнения_Заявки" Type="DateTime" Precision="3" />
-          <Property Name="НомерКвартиры" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="СписокЖилогоФонда" Relationship="Emelyanenko_HouseManagementModel.FK__Заявки__Адрес__0E6E26BF" FromRole="Заявки" ToRole="СписокЖилогоФонда" />
-        </EntityType>
-        <EntityType Name="ОтчетПоОплате">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ID_Собственника" Type="Int32" Nullable="false" />
-          <Property Name="ID_Адреса" Type="Int32" Nullable="false" />
-          <Property Name="Квартира" Type="Int32" Nullable="false" />
-          <Property Name="Период" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Начислено" Type="Decimal" Precision="15" Scale="2" Nullable="false" />
-          <Property Name="Оплачено" Type="Decimal" Precision="15" Scale="2" />
-          <NavigationProperty Name="Жильцы" Relationship="Self.FK_ОтчетПоОплате_Жильцы" FromRole="ОтчетПоОплате" ToRole="Жильцы" />
-          <NavigationProperty Name="СписокЖилогоФонда" Relationship="Self.FK_ОтчетПоОплате_СписокЖилогоФонда" FromRole="ОтчетПоОплате" ToRole="СписокЖилогоФонда" />
-        </EntityType>
-        <EntityType Name="Сотрудники">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ФИО" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Телефон" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Должность" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Должности" Relationship="Self.FK__Сотрудник__Должн__06CD04F7" FromRole="Сотрудники" ToRole="Должности" />
-          <NavigationProperty Name="Заявки" Relationship="Self.FK__Заявки__Ответств__0C85DE4D" FromRole="Сотрудники" ToRole="Заявки" />
-        </EntityType>
-        <EntityType Name="СписокЖилогоФонда">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Адрес" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Начало_управления" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Этажей" Type="Int32" Nullable="false" />
-          <Property Name="Квартир" Type="Int32" />
-          <Property Name="Год" Type="Int32" Nullable="false" />
-          <Property Name="Площадь_м2" Type="Double" Nullable="false" />
-          <NavigationProperty Name="ОтчетПоОплате" Relationship="Self.FK_ОтчетПоОплате_СписокЖилогоФонда" FromRole="СписокЖилогоФонда" ToRole="ОтчетПоОплате" />
-          <NavigationProperty Name="СписокЗадолженностей" Relationship="Self.FK_СписокЗадолженностей_СписокЖилогоФонда" FromRole="СписокЖилогоФонда" ToRole="СписокЗадолженностей" />
-          <NavigationProperty Name="Заявки" Relationship="Emelyanenko_HouseManagementModel.FK__Заявки__Адрес__0E6E26BF" FromRole="СписокЖилогоФонда" ToRole="Заявки" />
-        </EntityType>
-        <EntityType Name="СписокЗадолженностей">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ID_Адреса" Type="Int32" Nullable="false" />
-          <Property Name="Квартира" Type="Int32" Nullable="false" />
-          <Property Name="ID_Владельца" Type="Int32" Nullable="false" />
-          <Property Name="Телефон" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Вода" Type="Decimal" Precision="15" Scale="2" Nullable="false" />
-          <Property Name="Электроэнергия" Type="Decimal" Precision="15" Scale="2" />
-          <NavigationProperty Name="Жильцы" Relationship="Self.FK_СписокЗадолженностей_Жильцы" FromRole="СписокЗадолженностей" ToRole="Жильцы" />
-          <NavigationProperty Name="СписокЖилогоФонда" Relationship="Self.FK_СписокЗадолженностей_СписокЖилогоФонда" FromRole="СписокЗадолженностей" ToRole="СписокЖилогоФонда" />
-        </EntityType>
-        <EntityType Name="СтатусыЗаявок">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Название" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Заявки" Relationship="Self.FK__Заявки__СтатусЗа__0D7A0286" FromRole="СтатусыЗаявок" ToRole="Заявки" />
-        </EntityType>
-        <Association Name="FK__Сотрудник__Должн__06CD04F7">
-          <End Role="Должности" Type="Self.Должности" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Сотрудники" Type="Self.Сотрудники" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Должности">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Сотрудники">
-              <PropertyRef Name="Должность" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Заявки__ID_Жильц__0B91BA14">
-          <End Role="Жильцы" Type="Self.Жильцы" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Заявки" Type="Self.Заявки" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Жильцы">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Заявки">
-              <PropertyRef Name="ID_Жильца" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ОтчетПоОплате_Жильцы">
-          <End Role="Жильцы" Type="Self.Жильцы" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="ОтчетПоОплате" Type="Self.ОтчетПоОплате" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Жильцы">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="ОтчетПоОплате">
-              <PropertyRef Name="ID_Собственника" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_СписокЗадолженностей_Жильцы">
-          <End Role="Жильцы" Type="Self.Жильцы" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="СписокЗадолженностей" Type="Self.СписокЗадолженностей" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Жильцы">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="СписокЗадолженностей">
-              <PropertyRef Name="ID_Владельца" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Заявки__Ответств__0C85DE4D">
-          <End Role="Сотрудники" Type="Self.Сотрудники" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Заявки" Type="Self.Заявки" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Сотрудники">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Заявки">
-              <PropertyRef Name="Ответственный_Исполнитель" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Заявки__СтатусЗа__0D7A0286">
-          <End Role="СтатусыЗаявок" Type="Self.СтатусыЗаявок" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Заявки" Type="Self.Заявки" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="СтатусыЗаявок">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Заявки">
-              <PropertyRef Name="СтатусЗаявки" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ОтчетПоОплате_СписокЖилогоФонда">
-          <End Role="СписокЖилогоФонда" Type="Self.СписокЖилогоФонда" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="ОтчетПоОплате" Type="Self.ОтчетПоОплате" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="СписокЖилогоФонда">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="ОтчетПоОплате">
-              <PropertyRef Name="ID_Адреса" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_СписокЗадолженностей_СписокЖилогоФонда">
-          <End Role="СписокЖилогоФонда" Type="Self.СписокЖилогоФонда" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="СписокЗадолженностей" Type="Self.СписокЗадолженностей" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="СписокЖилогоФонда">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="СписокЗадолженностей">
-              <PropertyRef Name="ID_Адреса" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="Emelyanenko_HouseManagementEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Должности" EntityType="Self.Должности" />
-          <EntitySet Name="Жильцы" EntityType="Self.Жильцы" />
-          <EntitySet Name="Заявки" EntityType="Self.Заявки" />
-          <EntitySet Name="ОтчетПоОплате" EntityType="Self.ОтчетПоОплате" />
-          <EntitySet Name="Сотрудники" EntityType="Self.Сотрудники" />
-          <EntitySet Name="СписокЖилогоФонда" EntityType="Self.СписокЖилогоФонда" />
-          <EntitySet Name="СписокЗадолженностей" EntityType="Self.СписокЗадолженностей" />
-          <EntitySet Name="СтатусыЗаявок" EntityType="Self.СтатусыЗаявок" />
-          <AssociationSet Name="FK__Сотрудник__Должн__06CD04F7" Association="Self.FK__Сотрудник__Должн__06CD04F7">
-            <End Role="Должности" EntitySet="Должности" />
-            <End Role="Сотрудники" EntitySet="Сотрудники" />
+          <EntitySet Name="AllAddresses" EntityType="Emelyanenko_HouseManagementModel.AllAddresses" />
+          <EntitySet Name="ApplicationStatuses" EntityType="Emelyanenko_HouseManagementModel.ApplicationStatuses" />
+          <EntitySet Name="DebtsList" EntityType="Emelyanenko_HouseManagementModel.DebtsList" />
+          <EntitySet Name="Employees" EntityType="Emelyanenko_HouseManagementModel.Employees" />
+          <EntitySet Name="PaymentReport" EntityType="Emelyanenko_HouseManagementModel.PaymentReport" />
+          <EntitySet Name="Positions" EntityType="Emelyanenko_HouseManagementModel.Positions" />
+          <EntitySet Name="Residents" EntityType="Emelyanenko_HouseManagementModel.Residents" />
+          <AssociationSet Name="FK_DebtsList_AllAddresses" Association="Emelyanenko_HouseManagementModel.FK_DebtsList_AllAddresses">
+            <End Role="AllAddresses" EntitySet="AllAddresses" />
+            <End Role="DebtsList" EntitySet="DebtsList" />
           </AssociationSet>
-          <AssociationSet Name="FK__Заявки__ID_Жильц__0B91BA14" Association="Self.FK__Заявки__ID_Жильц__0B91BA14">
-            <End Role="Жильцы" EntitySet="Жильцы" />
-            <End Role="Заявки" EntitySet="Заявки" />
+          <AssociationSet Name="FK_PaymentReport_AllAddresses" Association="Emelyanenko_HouseManagementModel.FK_PaymentReport_AllAddresses">
+            <End Role="AllAddresses" EntitySet="AllAddresses" />
+            <End Role="PaymentReport" EntitySet="PaymentReport" />
           </AssociationSet>
-          <AssociationSet Name="FK_ОтчетПоОплате_Жильцы" Association="Self.FK_ОтчетПоОплате_Жильцы">
-            <End Role="Жильцы" EntitySet="Жильцы" />
-            <End Role="ОтчетПоОплате" EntitySet="ОтчетПоОплате" />
+          <AssociationSet Name="FK_DebtsList_Residents" Association="Emelyanenko_HouseManagementModel.FK_DebtsList_Residents">
+            <End Role="Residents" EntitySet="Residents" />
+            <End Role="DebtsList" EntitySet="DebtsList" />
           </AssociationSet>
-          <AssociationSet Name="FK_СписокЗадолженностей_Жильцы" Association="Self.FK_СписокЗадолженностей_Жильцы">
-            <End Role="Жильцы" EntitySet="Жильцы" />
-            <End Role="СписокЗадолженностей" EntitySet="СписокЗадолженностей" />
+          <AssociationSet Name="FK__Employees__Posit__5DCAEF64" Association="Emelyanenko_HouseManagementModel.FK__Employees__Posit__5DCAEF64">
+            <End Role="Positions" EntitySet="Positions" />
+            <End Role="Employees" EntitySet="Employees" />
           </AssociationSet>
-          <AssociationSet Name="FK__Заявки__Ответств__0C85DE4D" Association="Self.FK__Заявки__Ответств__0C85DE4D">
-            <End Role="Сотрудники" EntitySet="Сотрудники" />
-            <End Role="Заявки" EntitySet="Заявки" />
+          <AssociationSet Name="FK_PaymentReport_Residents" Association="Emelyanenko_HouseManagementModel.FK_PaymentReport_Residents">
+            <End Role="Residents" EntitySet="Residents" />
+            <End Role="PaymentReport" EntitySet="PaymentReport" />
           </AssociationSet>
-          <AssociationSet Name="FK__Заявки__СтатусЗа__0D7A0286" Association="Self.FK__Заявки__СтатусЗа__0D7A0286">
-            <End Role="СтатусыЗаявок" EntitySet="СтатусыЗаявок" />
-            <End Role="Заявки" EntitySet="Заявки" />
+          <EntitySet Name="Applications" EntityType="Emelyanenko_HouseManagementModel.Applications" />
+          <AssociationSet Name="FK__Applicati__Addre__5070F446" Association="Emelyanenko_HouseManagementModel.FK__Applicati__Addre__5070F446">
+            <End Role="AllAddresses" EntitySet="AllAddresses" />
+            <End Role="Applications" EntitySet="Applications" />
           </AssociationSet>
-          <AssociationSet Name="FK_ОтчетПоОплате_СписокЖилогоФонда" Association="Self.FK_ОтчетПоОплате_СписокЖилогоФонда">
-            <End Role="СписокЖилогоФонда" EntitySet="СписокЖилогоФонда" />
-            <End Role="ОтчетПоОплате" EntitySet="ОтчетПоОплате" />
+          <AssociationSet Name="FK__Applicati__Appli__5AEE82B9" Association="Emelyanenko_HouseManagementModel.FK__Applicati__Appli__5AEE82B9">
+            <End Role="ApplicationStatuses" EntitySet="ApplicationStatuses" />
+            <End Role="Applications" EntitySet="Applications" />
           </AssociationSet>
-          <AssociationSet Name="FK_СписокЗадолженностей_СписокЖилогоФонда" Association="Self.FK_СписокЗадолженностей_СписокЖилогоФонда">
-            <End Role="СписокЖилогоФонда" EntitySet="СписокЖилогоФонда" />
-            <End Role="СписокЗадолженностей" EntitySet="СписокЗадолженностей" />
+          <AssociationSet Name="FK__Applicati__Emplo__59FA5E80" Association="Emelyanenko_HouseManagementModel.FK__Applicati__Emplo__59FA5E80">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Applications" EntitySet="Applications" />
           </AssociationSet>
-          <AssociationSet Name="FK__Заявки__Адрес__0E6E26BF" Association="Emelyanenko_HouseManagementModel.FK__Заявки__Адрес__0E6E26BF">
-            <End Role="СписокЖилогоФонда" EntitySet="СписокЖилогоФонда" />
-            <End Role="Заявки" EntitySet="Заявки" />
+          <AssociationSet Name="FK__Applicati__Resid__59063A47" Association="Emelyanenko_HouseManagementModel.FK__Applicati__Resid__59063A47">
+            <End Role="Residents" EntitySet="Residents" />
+            <End Role="Applications" EntitySet="Applications" />
           </AssociationSet>
         </EntityContainer>
-        <Association Name="FK__Заявки__Адрес__0E6E26BF">
-          <End Type="Emelyanenko_HouseManagementModel.СписокЖилогоФонда" Role="СписокЖилогоФонда" Multiplicity="1" />
-          <End Type="Emelyanenko_HouseManagementModel.Заявки" Role="Заявки" Multiplicity="*" />
+        <EntityType Name="AllAddresses">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StartOfManagement" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="NumberOfStories" Type="Int32" Nullable="false" />
+          <Property Name="NumberOfFlats" Type="Int32" />
+          <Property Name="Year" Type="Int32" Nullable="false" />
+          <Property Name="AreaM2" Type="Double" Nullable="false" />
+          <NavigationProperty Name="DebtsList" Relationship="Emelyanenko_HouseManagementModel.FK_DebtsList_AllAddresses" FromRole="AllAddresses" ToRole="DebtsList" />
+          <NavigationProperty Name="PaymentReport" Relationship="Emelyanenko_HouseManagementModel.FK_PaymentReport_AllAddresses" FromRole="AllAddresses" ToRole="PaymentReport" />
+          <NavigationProperty Name="Applications" Relationship="Emelyanenko_HouseManagementModel.FK__Applicati__Addre__5070F446" FromRole="AllAddresses" ToRole="Applications" />
+        </EntityType>
+        <EntityType Name="ApplicationStatuses">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Applications" Relationship="Emelyanenko_HouseManagementModel.FK__Applicati__Appli__5AEE82B9" FromRole="ApplicationStatuses" ToRole="Applications" />
+        </EntityType>
+        <EntityType Name="DebtsList">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AddressID" Type="Int32" Nullable="false" />
+          <Property Name="FlatNumber" Type="Int32" Nullable="false" />
+          <Property Name="OwnerID" Type="Int32" Nullable="false" />
+          <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Water" Type="Decimal" Nullable="false" Precision="15" Scale="2" />
+          <Property Name="Electricity" Type="Decimal" Precision="15" Scale="2" />
+          <NavigationProperty Name="AllAddresses" Relationship="Emelyanenko_HouseManagementModel.FK_DebtsList_AllAddresses" FromRole="DebtsList" ToRole="AllAddresses" />
+          <NavigationProperty Name="Residents" Relationship="Emelyanenko_HouseManagementModel.FK_DebtsList_Residents" FromRole="DebtsList" ToRole="Residents" />
+        </EntityType>
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FIO" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PositionID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Positions" Relationship="Emelyanenko_HouseManagementModel.FK__Employees__Posit__5DCAEF64" FromRole="Employees" ToRole="Positions" />
+          <NavigationProperty Name="Applications" Relationship="Emelyanenko_HouseManagementModel.FK__Applicati__Emplo__59FA5E80" FromRole="Employees" ToRole="Applications" />
+        </EntityType>
+        <EntityType Name="PaymentReport">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OwnerID" Type="Int32" Nullable="false" />
+          <Property Name="AddressID" Type="Int32" Nullable="false" />
+          <Property Name="FlatNumber" Type="Int32" Nullable="false" />
+          <Property Name="Period" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Credited" Type="Decimal" Nullable="false" Precision="15" Scale="2" />
+          <Property Name="Paid" Type="Decimal" Precision="15" Scale="2" />
+          <NavigationProperty Name="AllAddresses" Relationship="Emelyanenko_HouseManagementModel.FK_PaymentReport_AllAddresses" FromRole="PaymentReport" ToRole="AllAddresses" />
+          <NavigationProperty Name="Residents" Relationship="Emelyanenko_HouseManagementModel.FK_PaymentReport_Residents" FromRole="PaymentReport" ToRole="Residents" />
+        </EntityType>
+        <EntityType Name="Positions">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Employees" Relationship="Emelyanenko_HouseManagementModel.FK__Employees__Posit__5DCAEF64" FromRole="Positions" ToRole="Employees" />
+        </EntityType>
+        <EntityType Name="Residents">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FIO" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DebtsList" Relationship="Emelyanenko_HouseManagementModel.FK_DebtsList_Residents" FromRole="Residents" ToRole="DebtsList" />
+          <NavigationProperty Name="PaymentReport" Relationship="Emelyanenko_HouseManagementModel.FK_PaymentReport_Residents" FromRole="Residents" ToRole="PaymentReport" />
+          <NavigationProperty Name="Applications" Relationship="Emelyanenko_HouseManagementModel.FK__Applicati__Resid__59063A47" FromRole="Residents" ToRole="Applications" />
+        </EntityType>
+        <Association Name="FK_DebtsList_AllAddresses">
+          <End Type="Emelyanenko_HouseManagementModel.AllAddresses" Role="AllAddresses" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Emelyanenko_HouseManagementModel.DebtsList" Role="DebtsList" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="СписокЖилогоФонда">
+            <Principal Role="AllAddresses">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="Заявки">
-              <PropertyRef Name="Адрес" />
+            <Dependent Role="DebtsList">
+              <PropertyRef Name="AddressID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaymentReport_AllAddresses">
+          <End Type="Emelyanenko_HouseManagementModel.AllAddresses" Role="AllAddresses" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Emelyanenko_HouseManagementModel.PaymentReport" Role="PaymentReport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AllAddresses">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PaymentReport">
+              <PropertyRef Name="AddressID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DebtsList_Residents">
+          <End Type="Emelyanenko_HouseManagementModel.Residents" Role="Residents" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Emelyanenko_HouseManagementModel.DebtsList" Role="DebtsList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Residents">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DebtsList">
+              <PropertyRef Name="OwnerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employees__Posit__5DCAEF64">
+          <End Type="Emelyanenko_HouseManagementModel.Positions" Role="Positions" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Emelyanenko_HouseManagementModel.Employees" Role="Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Positions">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="PositionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaymentReport_Residents">
+          <End Type="Emelyanenko_HouseManagementModel.Residents" Role="Residents" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Emelyanenko_HouseManagementModel.PaymentReport" Role="PaymentReport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Residents">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PaymentReport">
+              <PropertyRef Name="OwnerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Applications">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AddressID" Type="Int32" Nullable="false" />
+          <Property Name="ResidentID" Type="Int32" Nullable="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ProblemDescription" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="ApplicationStatusID" Type="Int32" Nullable="false" />
+          <Property Name="DateOfCompletion" Type="DateTime" Precision="3" />
+          <Property Name="FlatNumber" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AllAddresses" Relationship="Emelyanenko_HouseManagementModel.FK__Applicati__Addre__5070F446" FromRole="Applications" ToRole="AllAddresses" />
+          <NavigationProperty Name="ApplicationStatuses" Relationship="Emelyanenko_HouseManagementModel.FK__Applicati__Appli__5AEE82B9" FromRole="Applications" ToRole="ApplicationStatuses" />
+          <NavigationProperty Name="Employees" Relationship="Emelyanenko_HouseManagementModel.FK__Applicati__Emplo__59FA5E80" FromRole="Applications" ToRole="Employees" />
+          <NavigationProperty Name="Residents" Relationship="Emelyanenko_HouseManagementModel.FK__Applicati__Resid__59063A47" FromRole="Applications" ToRole="Residents" />
+        </EntityType>
+        <Association Name="FK__Applicati__Addre__5070F446">
+          <End Type="Emelyanenko_HouseManagementModel.AllAddresses" Role="AllAddresses" Multiplicity="1" />
+          <End Type="Emelyanenko_HouseManagementModel.Applications" Role="Applications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AllAddresses">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Applications">
+              <PropertyRef Name="AddressID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Applicati__Appli__5AEE82B9">
+          <End Type="Emelyanenko_HouseManagementModel.ApplicationStatuses" Role="ApplicationStatuses" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Emelyanenko_HouseManagementModel.Applications" Role="Applications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApplicationStatuses">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Applications">
+              <PropertyRef Name="ApplicationStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Applicati__Emplo__59FA5E80">
+          <End Type="Emelyanenko_HouseManagementModel.Employees" Role="Employees" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Emelyanenko_HouseManagementModel.Applications" Role="Applications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Applications">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Applicati__Resid__59063A47">
+          <End Type="Emelyanenko_HouseManagementModel.Residents" Role="Residents" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Emelyanenko_HouseManagementModel.Applications" Role="Applications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Residents">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Applications">
+              <PropertyRef Name="ResidentID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -533,91 +533,91 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="Хранилище Emelyanenko_HouseManagementModelContainer" CdmEntityContainer="Emelyanenko_HouseManagementEntities">
-          <EntitySetMapping Name="Должности">
-            <EntityTypeMapping TypeName="Emelyanenko_HouseManagementModel.Должности">
-              <MappingFragment StoreEntitySet="Должности">
+          <EntitySetMapping Name="AllAddresses">
+            <EntityTypeMapping TypeName="Emelyanenko_HouseManagementModel.AllAddresses">
+              <MappingFragment StoreEntitySet="AllAddresses">
+                <ScalarProperty Name="AreaM2" ColumnName="AreaM2" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="NumberOfFlats" ColumnName="NumberOfFlats" />
+                <ScalarProperty Name="NumberOfStories" ColumnName="NumberOfStories" />
+                <ScalarProperty Name="StartOfManagement" ColumnName="StartOfManagement" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Название" ColumnName="Название" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Жильцы">
-            <EntityTypeMapping TypeName="Emelyanenko_HouseManagementModel.Жильцы">
-              <MappingFragment StoreEntitySet="Жильцы">
+          <EntitySetMapping Name="ApplicationStatuses">
+            <EntityTypeMapping TypeName="Emelyanenko_HouseManagementModel.ApplicationStatuses">
+              <MappingFragment StoreEntitySet="ApplicationStatuses">
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="ФИО" ColumnName="ФИО" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Заявки">
-            <EntityTypeMapping TypeName="Emelyanenko_HouseManagementModel.Заявки">
-              <MappingFragment StoreEntitySet="Заявки">
-                <ScalarProperty Name="НомерКвартиры" ColumnName="НомерКвартиры" />
-                <ScalarProperty Name="Дата_Выполнения_Заявки" ColumnName="Дата_Выполнения_Заявки" />
+          <EntitySetMapping Name="DebtsList">
+            <EntityTypeMapping TypeName="Emelyanenko_HouseManagementModel.DebtsList">
+              <MappingFragment StoreEntitySet="DebtsList">
+                <ScalarProperty Name="Electricity" ColumnName="Electricity" />
+                <ScalarProperty Name="Water" ColumnName="Water" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+                <ScalarProperty Name="FlatNumber" ColumnName="FlatNumber" />
+                <ScalarProperty Name="AddressID" ColumnName="AddressID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Адрес" ColumnName="Адрес" />
-                <ScalarProperty Name="ID_Жильца" ColumnName="ID_Жильца" />
-                <ScalarProperty Name="Телефон" ColumnName="Телефон" />
-                <ScalarProperty Name="Описание_Проблемы" ColumnName="Описание_Проблемы" />
-                <ScalarProperty Name="Ответственный_Исполнитель" ColumnName="Ответственный_Исполнитель" />
-                <ScalarProperty Name="СтатусЗаявки" ColumnName="СтатусЗаявки" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ОтчетПоОплате">
-            <EntityTypeMapping TypeName="Emelyanenko_HouseManagementModel.ОтчетПоОплате">
-              <MappingFragment StoreEntitySet="ОтчетПоОплате">
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="Emelyanenko_HouseManagementModel.Employees">
+              <MappingFragment StoreEntitySet="Employees">
+                <ScalarProperty Name="PositionID" ColumnName="PositionID" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="FIO" ColumnName="FIO" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="ID_Собственника" ColumnName="ID_Собственника" />
-                <ScalarProperty Name="ID_Адреса" ColumnName="ID_Адреса" />
-                <ScalarProperty Name="Квартира" ColumnName="Квартира" />
-                <ScalarProperty Name="Период" ColumnName="Период" />
-                <ScalarProperty Name="Начислено" ColumnName="Начислено" />
-                <ScalarProperty Name="Оплачено" ColumnName="Оплачено" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Сотрудники">
-            <EntityTypeMapping TypeName="Emelyanenko_HouseManagementModel.Сотрудники">
-              <MappingFragment StoreEntitySet="Сотрудники">
+          <EntitySetMapping Name="PaymentReport">
+            <EntityTypeMapping TypeName="Emelyanenko_HouseManagementModel.PaymentReport">
+              <MappingFragment StoreEntitySet="PaymentReport">
+                <ScalarProperty Name="Paid" ColumnName="Paid" />
+                <ScalarProperty Name="Credited" ColumnName="Credited" />
+                <ScalarProperty Name="Period" ColumnName="Period" />
+                <ScalarProperty Name="FlatNumber" ColumnName="FlatNumber" />
+                <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="ФИО" ColumnName="ФИО" />
-                <ScalarProperty Name="Телефон" ColumnName="Телефон" />
-                <ScalarProperty Name="Должность" ColumnName="Должность" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="СписокЖилогоФонда">
-            <EntityTypeMapping TypeName="Emelyanenko_HouseManagementModel.СписокЖилогоФонда">
-              <MappingFragment StoreEntitySet="СписокЖилогоФонда">
+          <EntitySetMapping Name="Positions">
+            <EntityTypeMapping TypeName="Emelyanenko_HouseManagementModel.Positions">
+              <MappingFragment StoreEntitySet="Positions">
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Адрес" ColumnName="Адрес" />
-                <ScalarProperty Name="Начало_управления" ColumnName="Начало_управления" />
-                <ScalarProperty Name="Этажей" ColumnName="Этажей" />
-                <ScalarProperty Name="Квартир" ColumnName="Квартир" />
-                <ScalarProperty Name="Год" ColumnName="Год" />
-                <ScalarProperty Name="Площадь_м2" ColumnName="Площадь_м2" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="СписокЗадолженностей">
-            <EntityTypeMapping TypeName="Emelyanenko_HouseManagementModel.СписокЗадолженностей">
-              <MappingFragment StoreEntitySet="СписокЗадолженностей">
+          <EntitySetMapping Name="Residents">
+            <EntityTypeMapping TypeName="Emelyanenko_HouseManagementModel.Residents">
+              <MappingFragment StoreEntitySet="Residents">
+                <ScalarProperty Name="FIO" ColumnName="FIO" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="ID_Адреса" ColumnName="ID_Адреса" />
-                <ScalarProperty Name="Квартира" ColumnName="Квартира" />
-                <ScalarProperty Name="ID_Владельца" ColumnName="ID_Владельца" />
-                <ScalarProperty Name="Телефон" ColumnName="Телефон" />
-                <ScalarProperty Name="Вода" ColumnName="Вода" />
-                <ScalarProperty Name="Электроэнергия" ColumnName="Электроэнергия" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="СтатусыЗаявок">
-            <EntityTypeMapping TypeName="Emelyanenko_HouseManagementModel.СтатусыЗаявок">
-              <MappingFragment StoreEntitySet="СтатусыЗаявок">
+          <EntitySetMapping Name="Applications">
+            <EntityTypeMapping TypeName="Emelyanenko_HouseManagementModel.Applications">
+              <MappingFragment StoreEntitySet="Applications">
+                <ScalarProperty Name="FlatNumber" ColumnName="FlatNumber" />
+                <ScalarProperty Name="DateOfCompletion" ColumnName="DateOfCompletion" />
+                <ScalarProperty Name="ApplicationStatusID" ColumnName="ApplicationStatusID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="ProblemDescription" ColumnName="ProblemDescription" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="ResidentID" ColumnName="ResidentID" />
+                <ScalarProperty Name="AddressID" ColumnName="AddressID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Название" ColumnName="Название" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -12,18 +12,21 @@ namespace HouseManagement
     using System;
     using System.Collections.Generic;
     
-    public partial class Должности
+    public partial class Employees
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Должности()
+        public Employees()
         {
-            this.Сотрудники = new HashSet<Сотрудники>();
+            this.Applications = new HashSet<Applications>();
         }
     
         public int ID { get; set; }
-        public string Название { get; set; }
+        public string FIO { get; set; }
+        public string PhoneNumber { get; set; }
+        public int PositionID { get; set; }
     
+        public virtual Positions Positions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Сотрудники> Сотрудники { get; set; }
+        public virtual ICollection<Applications> Applications { get; set; }
     }
 }

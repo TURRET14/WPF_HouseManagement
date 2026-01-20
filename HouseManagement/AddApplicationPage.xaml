@@ -11,45 +11,47 @@
         <ResourceDictionary Source="/Dictionary1.xaml"></ResourceDictionary>
     </Page.Resources>
 
-    <Grid Width="500" HorizontalAlignment="Center" VerticalAlignment="Center">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Добавить/Изменить заявку"></TextBlock>
+    <ScrollViewer>
+        <Grid Width="500" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Добавить/Изменить заявку"></TextBlock>
 
-        <TextBlock Grid.Row="1" Grid.Column="0" Text="Адрес"></TextBlock>
-        <ComboBox Name="ComboBox_Address" Grid.Row="1" Grid.Column="1" SelectedItem="{Binding СписокЖилогоФонда}" DisplayMemberPath="Адрес"></ComboBox>
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Адрес"></TextBlock>
+            <ComboBox Name="ComboBox_Address" Grid.Row="1" Grid.Column="1" SelectedItem="{Binding AllAddresses}" DisplayMemberPath="Name"></ComboBox>
 
-        <TextBlock Grid.Row="2" Grid.Column="0" Text="Номер квартиры"></TextBlock>
-        <TextBox Name="TextBox_Apartment" Grid.Row="2" Grid.Column="1" Text="{Binding НомерКвартиры}"></TextBox>
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="Номер квартиры"></TextBlock>
+            <TextBox Name="TextBox_Apartment" Grid.Row="2" Grid.Column="1" Text="{Binding FlatNumber}"></TextBox>
 
-        <TextBlock Grid.Row="3" Grid.Column="0" Text="Жилец"></TextBlock>
-        <ComboBox Name="ComboBox_Resident" Grid.Row="3" Grid.Column="1" SelectedItem="{Binding Жильцы}" DisplayMemberPath="ФИО"></ComboBox>
+            <TextBlock Grid.Row="3" Grid.Column="0" Text="Жилец"></TextBlock>
+            <ComboBox Name="ComboBox_Resident" Grid.Row="3" Grid.Column="1" SelectedItem="{Binding Residents}" DisplayMemberPath="FIO"></ComboBox>
 
-        <TextBlock Grid.Row="4" Grid.Column="0" Text="Телефон"></TextBlock>
-        <TextBox Name="TextBox_Phone" Grid.Row="4" Grid.Column="1" Text="{Binding Телефон}"></TextBox>
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="Телефон"></TextBlock>
+            <TextBox Name="TextBox_Phone" Grid.Row="4" Grid.Column="1" Text="{Binding PhoneNumber}"></TextBox>
 
-        <TextBlock Grid.Row="5" Grid.Column="0" Text="Описание проблемы"></TextBlock>
-        <TextBox Name="TextBox_Description" Grid.Row="5" Grid.Column="1" Text="{Binding Описание_Проблемы}"></TextBox>
+            <TextBlock Grid.Row="5" Grid.Column="0" Text="Описание проблемы"></TextBlock>
+            <TextBox Name="TextBox_Description" Grid.Row="5" Grid.Column="1" Text="{Binding ProblemDescription}"></TextBox>
 
-        <TextBlock Grid.Row="6" Grid.Column="0" Text="Ответственный исполнитель"></TextBlock>
-        <ComboBox Name="ComboBox_Employee" Grid.Row="6" Grid.Column="1" SelectedItem="{Binding Сотрудники}" DisplayMemberPath="ФИО"></ComboBox>
+            <TextBlock Grid.Row="6" Grid.Column="0" Text="Ответственный исполнитель"></TextBlock>
+            <ComboBox Name="ComboBox_Employee" Grid.Row="6" Grid.Column="1" SelectedItem="{Binding Employees}" DisplayMemberPath="FIO"></ComboBox>
 
-        <TextBlock Grid.Row="7" Grid.Column="0" Text="Статус заявки"></TextBlock>
-        <ComboBox Name="ComboBox_Status"  Grid.Row="7" Grid.Column="1" SelectedItem="{Binding СтатусыЗаявок}" DisplayMemberPath="Название"></ComboBox>
+            <TextBlock Grid.Row="7" Grid.Column="0" Text="Статус заявки"></TextBlock>
+            <ComboBox Name="ComboBox_Status"  Grid.Row="7" Grid.Column="1" SelectedItem="{Binding ApplicationStatuses}" DisplayMemberPath="Name"></ComboBox>
 
-        <Button Name="Button_Save" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Click="Button_Save_Click">Сохранить</Button>
-    </Grid>
+            <Button Name="Button_Save" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Click="Button_Save_Click">Сохранить</Button>
+        </Grid>
+    </ScrollViewer>
 </Page>

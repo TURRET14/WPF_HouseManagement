@@ -12,21 +12,17 @@ namespace HouseManagement
     using System;
     using System.Collections.Generic;
     
-    public partial class Сотрудники
+    public partial class DebtsList
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Сотрудники()
-        {
-            this.Заявки = new HashSet<Заявки>();
-        }
-    
         public int ID { get; set; }
-        public string ФИО { get; set; }
-        public string Телефон { get; set; }
-        public int Должность { get; set; }
+        public int AddressID { get; set; }
+        public int FlatNumber { get; set; }
+        public int OwnerID { get; set; }
+        public string PhoneNumber { get; set; }
+        public decimal Water { get; set; }
+        public Nullable<decimal> Electricity { get; set; }
     
-        public virtual Должности Должности { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Заявки> Заявки { get; set; }
+        public virtual AllAddresses AllAddresses { get; set; }
+        public virtual Residents Residents { get; set; }
     }
 }
