@@ -70,6 +70,9 @@
     <Compile Include="AddApplicationPage.xaml.cs">
       <DependentUpon>AddApplicationPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddressesPage.xaml.cs">
+      <DependentUpon>AddressesPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AllAddresses.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -87,6 +90,9 @@
     </Compile>
     <Compile Include="Employees.cs">
       <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeesPage.xaml.cs">
+      <DependentUpon>EmployeesPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model1.cs">
       <AutoGen>True</AutoGen>
@@ -106,6 +112,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="AddressesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AllApplicationsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -115,6 +125,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Dictionary1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EmployeesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

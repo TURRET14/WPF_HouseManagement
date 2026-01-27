@@ -65,5 +65,15 @@ namespace HouseManagement
         {
             NavigationService.Navigate(new ApplicationsCompletionHistory());
         }
+
+        private void Button_Addresses_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AddressesPage());
+        }
+
+        private void Button_Employees_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new EmployeesPage());
+        }
     }
 }

@@ -16,11 +16,20 @@
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" Text="Все заявки"></TextBlock>
-        <Button Name="Button_ApplicationsCompletetionHistory" Grid.Row="1" Click="Button_ApplicationsCompletetionHistory_Click">История выполнения заявок</Button>
-        <Grid Grid.Row="2">
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Name="Button_Addresses" Click="Button_Addresses_Click">Жилой фонд</Button>
+            <Button Grid.Column="1" Name="Button_Employees" Click="Button_Employees_Click">Сотрудники</Button>
+        </Grid>
+        <Button Name="Button_ApplicationsCompletetionHistory" Grid.Row="2" Click="Button_ApplicationsCompletetionHistory_Click">История выполнения заявок</Button>
+        <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
@@ -29,7 +38,7 @@
             <Button Name="Button_Delete" Grid.Row="0" Grid.Column="1" Click="Button_Delete_Click">Удалить заявку</Button>
         </Grid>
         
-        <DataGrid Name="DataGrid_Main" Grid.Row="3" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single">
+        <DataGrid Name="DataGrid_Main" Grid.Row="4" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single">
             <DataGrid.RowStyle>
                 <Style TargetType="DataGridRow">
                     <Style.Setters>
